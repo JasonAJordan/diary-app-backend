@@ -6,6 +6,11 @@ class StickersController < ApplicationController
         render json: stickers, except:[:updated_at, :created_at]
     end 
 
+    def show 
+        sticker = Sticker.find_by(id: params[:id])
+        render json: sticker
+    end 
+
 
 end
 
