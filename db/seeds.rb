@@ -22,9 +22,10 @@ start = Date.new(2020,1,1)
     start = start.tomorrow()
 }
 
-post1 = Post.create(day_id: 1, title: "First Test", context: "This is a good test", text_color: "red")
+post1 = Post.create(day_id: 1, title: "First Test", context: "This is a good test", text_color: "#b8fffe")
 
 sticker1 = Sticker.create(user_id: jason.id, image: imgPlaceHolder, name: "PlaceHolder")
+sticker2 = Sticker.create(user_id: jason.id, image: "../imgs/star.png", name: "Star")
 
 
 daysticker1 = DaySticker.create(sticker_id: sticker1.id, day_id: 1)

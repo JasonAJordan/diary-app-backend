@@ -6,5 +6,4 @@ class DaySerializer < ActiveModel::Serializer
   has_many :stickers, through: :day_stickers
   has_one :user 
 
-
 end
