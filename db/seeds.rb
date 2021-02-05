@@ -16,7 +16,7 @@ imgPlaceHolder = "https://via.placeholder.com/50"
 
 jason = User.create(username: "JasonJordan", password:"1234", name: "Jason Jordan", bio: "This is the bio")
 
-start = Date.new(2020,1,1)
+start = Date.new(2021,1,1)
 365.times {
     Day.create!(user_id: jason.id, date: start.strftime("%m/%d/%Y"))
     start = start.tomorrow()
