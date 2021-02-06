@@ -5,27 +5,49 @@ class UserSerializer < ActiveModel::Serializer
   has_many :posts, through: :days
   has_many :day_stickers, through: :days
 
+  #has_many :days 
   attributes :days
-
-  #has_many :days, include_nested_associations: true
-  # accepts_nested_attributes_for :days
 
   def days
     customized_days = []
-    object.days.collect do |day|
+
+    object.days.collect do |day| #map and collect are the same 
       custom_day = {}
-      # custom_day = day.attributes
+      # custom_day = day.attributes #This will include created/updated at for days 
       custom_day[:id] = day.id
       custom_day[:date] = day.date
-      custom_day[:posts] = day.posts
-      custom_day[:stickers] = day.stickers
+      
+      # custom_day[:posts] = day.posts # this will everything that posts has
+      custom_day[:posts] = day.posts.map do |post|  
+        {id: post.id, title: post.title, context: post.context, text_color: post.text_color }
+      end 
 
+      custom_day[:stickers] = day.stickers.map do |sticker| 
+       {id: sticker.id, image: sticker.image, name: sticker.name}
+      end 
+
+      custom_day[:day_stickers] = day.day_stickers
+      
       customized_days.push(custom_day)
     end
     return customized_days
   end
 
+  # def day_stickers 
+  #   custom_day_stickers = []
+
+  #   object.day_stickers.collect do
+
 end
 
+# "id": 1,
+# "title": "First Test",
+# "context": "This is a good test",
+# "text_color": "#b8fffe",
 
+# "id": 1,
+#           "image": "https://via.placeholder.com/50",
+#           "name": "PlaceHolder",
+  #has_many :days, include_nested_associations: true
+  # accepts_nested_attributes_for :days
 

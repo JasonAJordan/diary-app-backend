@@ -16,13 +16,23 @@ imgPlaceHolder = "https://via.placeholder.com/50"
 
 jason = User.create(username: "JasonJordan", password:"1234", name: "Jason Jordan", bio: "This is the bio")
 
+xd = User.create(username: "debugging", password:"1234", name: "debugging", bio: "testing")
+
 start = Date.new(2021,1,1)
 365.times {
     Day.create!(user_id: jason.id, date: start.strftime("%m/%d/%Y"))
     start = start.tomorrow()
 }
 
+start2 = Date.new(2021,1,1)
+365.times {
+    Day.create!(user_id: xd.id, date: start.strftime("%m/%d/%Y"))
+    start2 = start2.tomorrow()
+}
+
 post1 = Post.create(day_id: 1, title: "First Test", context: "This is a good test", text_color: "#b8fffe")
+
+postDebug = Post.create(day_id: 367, title: "First Test", context: "This is a good test", text_color: "#b8fffe")
 
 sticker1 = Sticker.create(user_id: jason.id, image: imgPlaceHolder, name: "PlaceHolder")
 sticker2 = Sticker.create(user_id: jason.id, image: "../imgs/star.png", name: "Star")
