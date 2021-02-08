@@ -5,6 +5,8 @@ class UserSerializer < ActiveModel::Serializer
   has_many :posts, through: :days
   has_many :day_stickers, through: :days
 
+  # has_one_attached :picture
+
   #has_many :days 
   attributes :days
 
@@ -33,10 +35,6 @@ class UserSerializer < ActiveModel::Serializer
     return customized_days
   end
 
-  # def day_stickers 
-  #   custom_day_stickers = []
-
-  #   object.day_stickers.collect do
 
 end
 
@@ -50,4 +48,9 @@ end
 #           "name": "PlaceHolder",
   #has_many :days, include_nested_associations: true
   # accepts_nested_attributes_for :days
+
+    # def day_stickers 
+  #   custom_day_stickers = []
+
+  #   object.day_stickers.collect do
 
