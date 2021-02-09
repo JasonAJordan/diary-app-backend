@@ -37,10 +37,15 @@ post1 = Post.create(day_id: 1, title: "First Test", context: "This is a good tes
 
 postDebug = Post.create(day_id: 367, title: "First Test", context: "This is a good test", text_color: "#000000")
 
+
+stickera = Sticker.create(user_id: jason.id, image: "../imgs/coding.jpeg", name: "Work")
+stickerb = Sticker.create(user_id: jason.id, image: "../imgs/lunch.png", name: "Lunch")
+stickerc = Sticker.create(user_id: jason.id, image: "../imgs/wash.png", name: "Cleaned")
 sticker1 = Sticker.create(user_id: jason.id, image: hyped, name: "Hyped")
 sticker2 = Sticker.create(user_id: jason.id, image: joker, name: "Joker")
 sticker3 = Sticker.create(user_id: jason.id, image: "../imgs/star.png", name: "Star")
 
+stickerdebug = Sticker.create(user_id: debug.id, image: "../imgs/star.png", name: "Star")
 
 daysticker1 = DaySticker.create(sticker_id: sticker1.id, day_id: 1)
 
