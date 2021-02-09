@@ -13,29 +13,33 @@ Sticker.destroy_all
 DaySticker.destroy_all
 
 imgPlaceHolder = "https://via.placeholder.com/50"
+hyped = "../imgs/hyped.jpg"
+joker ="../imgs/joker.png"
 
 jason = User.create(username: "JasonJordan", password:"1234", name: "Jason Jordan", bio: "This is the bio")
 
-xd = User.create(username: "debugging", password:"1234", name: "debugging", bio: "testing")
+debug = User.create(username: "Debugging", password:"1234", name: "debugging", bio: "testing")
 
 start = Date.new(2021,1,1)
 365.times {
     Day.create!(user_id: jason.id, date: start.strftime("%m/%d/%Y"))
+    Day.create!(user_id: debug.id, date: start.strftime("%m/%d/%Y"))
     start = start.tomorrow()
 }
 
-start2 = Date.new(2021,1,1)
-365.times {
-    Day.create!(user_id: xd.id, date: start.strftime("%m/%d/%Y"))
-    start2 = start2.tomorrow()
-}
+# start2 = Date.new(2021,1,1)
+# 365.times {
+    
+#     start2 = start2.tomorrow()
+# }
 
 post1 = Post.create(day_id: 1, title: "First Test", context: "This is a good test", text_color: "#000000")
 
 postDebug = Post.create(day_id: 367, title: "First Test", context: "This is a good test", text_color: "#000000")
 
-sticker1 = Sticker.create(user_id: jason.id, image: imgPlaceHolder, name: "PlaceHolder")
-sticker2 = Sticker.create(user_id: jason.id, image: "../imgs/star.png", name: "Star")
+sticker1 = Sticker.create(user_id: jason.id, image: hyped, name: "Hyped")
+sticker2 = Sticker.create(user_id: jason.id, image: joker, name: "Joker")
+sticker3 = Sticker.create(user_id: jason.id, image: "../imgs/star.png", name: "Star")
 
 
 daysticker1 = DaySticker.create(sticker_id: sticker1.id, day_id: 1)

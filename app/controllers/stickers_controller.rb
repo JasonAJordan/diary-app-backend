@@ -16,12 +16,16 @@ class StickersController < ApplicationController
     end 
 
     def create 
+        if params[:image].instance_of?(String)
+            sticker = Sticker.create(sticker_params)
+        else 
         imageUploaded = Cloudinary::Uploader.upload(params[:image])
         #puts "asdfasdfasdfasdf"
         sticker_params_new = sticker_params
         sticker_params_new[:image] = imageUploaded["url"]
         sticker = Sticker.create(sticker_params_new)
         render json: sticker, except:[:updated_at, :created_at]
+        end
     end 
 
     def edit 
