@@ -49,6 +49,8 @@ stickerdebug = Sticker.create(user_id: debug.id, image: "../imgs/star.png", name
 
 daysticker1 = DaySticker.create(sticker_id: sticker1.id, day_id: 1)
 
+note1 = Note.create(user_id: jason.id, title: "First Note", context: "This is a seed test", text_color: "#000000")
+
 
 
 # t.string "username"

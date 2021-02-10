@@ -4,6 +4,7 @@ class UserSerializer < ActiveModel::Serializer
   has_many :stickers
   has_many :posts, through: :days
   has_many :day_stickers, through: :days
+  has_many :notes
 
   # has_one_attached :picture
 

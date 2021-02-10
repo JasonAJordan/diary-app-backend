@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :stickers
   resources :posts
   resources :day_stickers
+  resources :notes
 
   
 end
