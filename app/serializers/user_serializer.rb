@@ -2,14 +2,14 @@ class UserSerializer < ActiveModel::Serializer
   attributes :id, :username, :password, :name, :bio
 
   has_many :stickers
-  has_many :posts, through: :days
+  #has_many :posts, through: :days
   has_many :day_stickers, through: :days
   has_many :notes
 
   # has_one_attached :picture
 
   #has_many :days 
-  attributes :days
+  attributes :days, :posts
 
   def days
     customized_days = []
@@ -36,8 +36,28 @@ class UserSerializer < ActiveModel::Serializer
     return customized_days
   end
 
+  def posts 
+    customized_posts = []
+      object.posts.collect do |post| 
+        custom_post = {}
+        custom_post[:id] = post.id 
+        custom_post[:title] = post.title
+        custom_post[:context] = post.context
+        custom_post[:text_color] = post.text_color
+        custom_post[:day_id] = post.day.id
+        custom_post[:date] = post.day.date
+
+        customized_posts.push(custom_post)
+      end 
+      return customized_posts
+  end 
 
 end
+
+      # "id": 1,
+      # "title": "First Test",
+      # "context": "This is a good test",
+      # "text_color": "#ff1414"
 
 # "id": 1,
 # "title": "First Test",
