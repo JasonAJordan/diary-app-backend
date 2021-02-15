@@ -17,8 +17,21 @@ class PostsController < ApplicationController
     end 
 
     def create 
-        post = Post.create(post_params)
+        # post = Post.create(post_params)
+        # render json: post, except:[:updated_at, :created_at]
+
+
+        if params[:image].instance_of?(String) || params[:image].nil?
+            post = Post.create(post_params)
+            render json: post, except:[:updated_at, :created_at]
+        else 
+        imageUploaded = Cloudinary::Uploader.upload(params[:image])
+        #puts "asdfasdfasdfasdf"
+        post_params_new = post_params
+        post_params_new[:image] = imageUploaded["url"]
+        post = Post.create(post_params_new)
         render json: post, except:[:updated_at, :created_at]
+        end
     end 
 
     def edit 
@@ -40,7 +53,7 @@ class PostsController < ApplicationController
     private 
 
     def post_params 
-        params.permit(:title, :context, :text_color, :day_id)
+        params.permit(:title, :context, :text_color, :image, :day_id)
     end 
 
 end

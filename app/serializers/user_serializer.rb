@@ -22,7 +22,7 @@ class UserSerializer < ActiveModel::Serializer
       
       # custom_day[:posts] = day.posts # this will everything that posts has
       custom_day[:posts] = day.posts.map do |post|  
-        {id: post.id, title: post.title, context: post.context, text_color: post.text_color }
+        {id: post.id, title: post.title, context: post.context, text_color: post.text_color, image: post.image}
       end 
 
       custom_day[:stickers] = day.stickers.map do |sticker| 
@@ -44,6 +44,7 @@ class UserSerializer < ActiveModel::Serializer
         custom_post[:title] = post.title
         custom_post[:context] = post.context
         custom_post[:text_color] = post.text_color
+        custom_post[:image] = post.image
         custom_post[:day_id] = post.day.id
         custom_post[:date] = post.day.date
 

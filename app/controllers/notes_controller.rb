@@ -16,8 +16,20 @@ class NotesController < ApplicationController
     end 
 
     def create 
-        note = Note.create(note_params)
+        # note = Note.create(note_params)
+        # render json: note, except:[:updated_at, :created_at]
+
+        if params[:image].instance_of?(String) || params[:image].nil?
+            note = Note.create(note_params)
+            render json: note, except:[:updated_at, :created_at]
+        else 
+        imageUploaded = Cloudinary::Uploader.upload(params[:image])
+        #puts "asdfasdfasdfasdf"
+        note_params_new = note_params
+        note_params_new[:image] = imageUploaded["url"]
+        note = Note.create(note_params_new)
         render json: note, except:[:updated_at, :created_at]
+        end
     end 
 
     def edit 
@@ -39,6 +51,6 @@ class NotesController < ApplicationController
     private 
 
     def note_params 
-        params.permit(:title, :context, :text_color, :user_id)
+        params.permit(:title, :context, :text_color, :user_id, :image)
     end 
 end

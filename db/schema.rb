@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_003310) do
     t.string "title"
     t.string "context"
     t.string "text_color"
+    t.string "image"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_003310) do
     t.string "title"
     t.string "context"
     t.string "text_color"
+    t.string "image"
     t.bigint "day_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

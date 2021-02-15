@@ -1,5 +1,5 @@
 class NoteSerializer < ActiveModel::Serializer
-  attributes :id, :title, :context, :text_color
+  attributes :id, :title, :context, :text_color, :image
   #belongs_to :user
 
   attributes :user 
