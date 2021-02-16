@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password, :name, :bio
+  attributes :id, :username, :name, :bio
 
   has_many :stickers
   #has_many :posts, through: :days

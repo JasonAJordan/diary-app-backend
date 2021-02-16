@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    has_secure_password
+    validates :username, uniqueness: true
+
     has_many :days
     has_many :stickers
     has_many :posts, through: :days 
