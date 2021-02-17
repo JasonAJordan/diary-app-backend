@@ -22,11 +22,13 @@ class AuthController < ApplicationController
     user = User.find_by(username: params[:username])
 
     if user && user.authenticate(params[:password])
-      token = encode_token({ user_id: user.id })
+      secret = Rails.application.secrets.secret_key_base
+      #token = encode_token({ user_id: user.id })
+      token = JWT.encode({user_id: user.id}, secret, "HS256")
       render json: { user: UserSerializer.new(user), token: token }
       #render json: user 
     else 
-      render json: { error: user.errors.full_messages }, status: :unauthorized
+      render json: { failure: "Invalid Username or Password"} #, status: :unauthorized
     end
 
   end  
@@ -47,6 +49,5 @@ class AuthController < ApplicationController
     JWT.encode(payload, Rails.application.secrets.secret_key_base, "HS256")
   end
 
-  
 
 end
