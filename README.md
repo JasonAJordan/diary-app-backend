@@ -1,27 +1,10 @@
-Testing! testing
+# SoftJournal Backend 
 
-# README
+This App was my final project for Flatiron's Software Engineering Bootcamp. 
+Modeled with a Ruby backend, Reactjs Frontend, PostgresSQL as the database, and Cloundonary as the image API, for hosting images. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To set up the backend type in "bundle install" then rails db:create, migrate, & seed. 
 
-Things you may want to cover:
+Non stadared Ruby on Rails gems included active_model_serializers, cloudinary, & jwt.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+This app features full user password authencations and all CRUD actions. 
