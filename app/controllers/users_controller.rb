@@ -51,6 +51,20 @@ class UsersController < ApplicationController
 
     def update
         user = User.find_by(id: params[:id])
+
+        # if params[:picture].instance_of?(String)
+        #     user.update(user_params)
+        #     render json: user
+        # else 
+        # imageUploaded = Cloudinary::Uploader.upload(params[:image])
+        # #puts "asdfasdfasdfasdf"
+        # user_params_new = user_params
+        # user_params_new[:picture] = imageUploaded["url"]
+        # user.update(user_params_new)
+        # render json: user
+        # end
+
+        #non image uploading 
         user.update(user_params)
         render json: user
     end 
@@ -64,7 +78,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params 
-        params.permit(:username, :password, :name, :bio)
+        params.permit(:username, :password, :name, :bio, :picture)
     end 
 
 

@@ -16,7 +16,8 @@ imgPlaceHolder = "https://via.placeholder.com/50"
 hyped = "../imgs/hyped.jpg"
 joker ="../imgs/joker.png"
 
-jason = User.create(username: "JasonJordan", password:"1234", name: "Jason Jordan", bio: "This is the bio")
+jason = User.create(username: "JasonJordan", password:"1234", name: "Jason Jordan", 
+    bio: "This is the bio", picture: "../imgs/me.jpeg")
 
 debug = User.create(username: "Debugging", password:"1234", name: "debugging", bio: "testing")
 
